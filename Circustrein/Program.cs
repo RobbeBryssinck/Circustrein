@@ -7,15 +7,16 @@ namespace Circustrein
         static void Main(string[] args)
         {
             Train train = new Train();
-            train.AddAnimal(new Animal(1, "Carnivore"));
             train.AddAnimal(new Animal(1, "Herbivore"));
-            train.AddAnimal(new Animal(3, "Carnivore"));
-            train.AddAnimal(new Animal(3, "Carnivore"));
-            train.AddAnimal(new Animal(3, "Herbivore"));
-            train.AddAnimal(new Animal(3, "Herbivore"));
-            train.AddAnimal(new Animal(5, "Herbivore"));
-            train.AddAnimal(new Animal(5, "Herbivore"));
             train.AddAnimal(new Animal(5, "Carnivore"));
+            train.AddAnimal(new Animal(3, "Herbivore"));
+            train.AddAnimal(new Animal(5, "Herbivore"));
+            train.AddAnimal(new Animal(3, "Carnivore"));
+            train.AddAnimal(new Animal(3, "Carnivore"));
+            train.AddAnimal(new Animal(1, "Herbivore"));
+            train.AddAnimal(new Animal(3, "Herbivore"));
+            train.AddAnimal(new Animal(5, "Herbivore"));
+            train.AddAnimal(new Animal(1, "Carnivore"));
 
             LoadTrain(train);
             PrintWagons(train);
