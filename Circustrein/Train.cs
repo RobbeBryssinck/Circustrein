@@ -11,10 +11,14 @@ namespace Circustrein
         public List<Wagon> Wagons { get; set; }
 
         // Methods
-        public void AddAnimal(Animal animal)
+        public Train()
         {
             Animals = new List<Animal>();
             Wagons = new List<Wagon>();
+        }
+
+        public void AddAnimal(Animal animal)
+        {
             Animals.Add(animal);
         }
 
