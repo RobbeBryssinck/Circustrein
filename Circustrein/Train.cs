@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Circustrein
 {
-    class Train
+    public class Train
     {
         // Properties
-        public List<Animal> Animals { get; set; }
-        public List<Wagon> Wagons { get; set; }
+        List<Animal> Animals { get; set; }
+        List<Wagon> Wagons { get; set; }
+        int WagonIndex { get; } = 0;
 
         // Methods
         public Train()
@@ -22,9 +23,15 @@ namespace Circustrein
             Animals.Add(animal);
         }
 
-        public void AddWagon(Wagon wagon)
+        public List<Animal> AddWagon(int wagonIndex, List<Animal> animals)
         {
-            Wagons.Add(wagon);
+            Wagons.Add(new Wagon());
+
+            Wagons[wagonIndex].AddAnimal(animals[0]);
+            Wagons[wagonIndex].UsedSize = animals[0].Size;
+            animals.RemoveAt(0);
+            
+            return animals;
         }
     }
 }

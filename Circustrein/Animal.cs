@@ -13,21 +13,17 @@ namespace Circustrein
     }
     */
 
-    class Animal
+    public class Animal
     {
-        // Fields
-        private int size;
-        private string food;
-
         // Properties
-        public int Size { get { return size; } }
-        public string Food { get { return food; } }
-        
+        public int Size { get; }
+        public string Food { get; }
+
         // Methods
         public Animal(int size, string food)
         {
-            this.size = size;
-            this.food = food;
+            Size = size;
+            Food = food;
         }
     }
 }

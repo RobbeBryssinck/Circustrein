@@ -1,36 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Circustrein
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Train train = new Train();
-            train.AddAnimal(new Animal(1, "Herbivore"));
-            train.AddAnimal(new Animal(5, "Carnivore"));
-            train.AddAnimal(new Animal(3, "Herbivore"));
-            train.AddAnimal(new Animal(5, "Herbivore"));
-            train.AddAnimal(new Animal(3, "Carnivore"));
-            train.AddAnimal(new Animal(3, "Carnivore"));
-            train.AddAnimal(new Animal(1, "Herbivore"));
-            train.AddAnimal(new Animal(3, "Herbivore"));
-            train.AddAnimal(new Animal(5, "Herbivore"));
-            train.AddAnimal(new Animal(1, "Carnivore"));
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Animal(1, "Herbivore"));
+            animals.Add(new Animal(5, "Carnivore"));
+            animals.Add(new Animal(3, "Herbivore"));
+            animals.Add(new Animal(5, "Herbivore"));
+            animals.Add(new Animal(3, "Carnivore"));
+            animals.Add(new Animal(3, "Carnivore"));
+            animals.Add(new Animal(1, "Herbivore"));
+            animals.Add(new Animal(3, "Herbivore"));
+            animals.Add(new Animal(5, "Herbivore"));
+            animals.Add(new Animal(1, "Carnivore"));
 
-            LoadTrain(train);
+            Train train = LoadTrain(animals);
             PrintWagons(train);
         }
 
-        public static void LoadTrain(Train train)
+        public static Train LoadTrain(List<Animal> animals)
         {
+            Train train = new Train();
             int wagonIndex = 0;
-            while (train.Animals.Count != 0)
+            while (animals.Count != 0)
             {
-                train.AddWagon(new Wagon());
-                train.Wagons[wagonIndex].AddAnimal(train.Animals[0]);
-                train.Wagons[wagonIndex].UsedSize = train.Animals[0].Size;
-                train.Animals.RemoveAt(0);
+                animals = train.AddWagon(wagonIndex, animals);
 
                 for (int i = train.Animals.Count - 1; i >= 0; i--)
                 {
@@ -62,6 +61,7 @@ namespace Circustrein
                 }
                 wagonIndex += 1;
             }
+            return train;
         }
 
         public static void PrintWagons(Train train)
