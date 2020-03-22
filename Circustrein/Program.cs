@@ -27,14 +27,14 @@ namespace Circustrein
         {
             Train train = new Train();
             int wagonIndex = 0;
+
             while (animals.Count != 0)
             {
                 animals = train.AddWagon(wagonIndex, animals);
 
-                for (int i = train.Animals.Count - 1; i >= 0; i--)
+                for (int i = animals.Count - 1; i >= 0; i--)
                 {
-                    int varcheck = train.Wagons[wagonIndex].UsedSize + train.Animals[i].Size;
-                    if (varcheck > 10)
+                    if (train.IsAnimalTooBig(wagonIndex, i, animals))
                         continue;
 
                     int compatible = 1;

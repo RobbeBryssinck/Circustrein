@@ -7,14 +7,12 @@ namespace Circustrein
     public class Train
     {
         // Properties
-        List<Animal> Animals { get; set; }
         List<Wagon> Wagons { get; set; }
         int WagonIndex { get; } = 0;
 
         // Methods
         public Train()
         {
-            Animals = new List<Animal>();
             Wagons = new List<Wagon>();
         }
 
@@ -32,6 +30,14 @@ namespace Circustrein
             animals.RemoveAt(0);
             
             return animals;
+        }
+
+        public bool IsAnimalTooBig(int wagonIndex, int animalIndex, List<Animal> animals)
+        {
+            if (Wagons[wagonIndex].UsedSize + animals[animalIndex].Size > 10)
+                return true;
+            else
+                return false;
         }
     }
 }
