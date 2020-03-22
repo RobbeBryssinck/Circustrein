@@ -54,5 +54,12 @@ namespace Circustrein
 
             return compatible;
         }
+
+        public List<Animal> AddAnimalToWagon(int wagonIndex, int animalIndex, List<Animal> animals)
+        {
+            Wagons[wagonIndex].AddAnimal(animals[animalIndex]);
+            animals.RemoveAt(animalIndex);
+            return animals;
+        }
     }
 }

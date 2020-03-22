@@ -39,9 +39,7 @@ namespace Circustrein
 
                     if (train.IsAnimalCompatible(wagonIndex, i, animals))
                     {
-                        train.Wagons[wagonIndex].AddAnimal(train.Animals[i]);
-                        train.Wagons[wagonIndex].UsedSize += train.Animals[i].Size;
-                        train.Animals.RemoveAt(i);
+                        train.AddAnimalToWagon(wagonIndex, i, animals);
                     }
                 }
                 wagonIndex += 1;

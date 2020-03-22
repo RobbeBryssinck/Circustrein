@@ -20,6 +20,7 @@ namespace Circustrein
         public void AddAnimal(Animal animal)
         {
             Animals.Add(animal);
+            UsedSize += animal.Size;
         }
     }
 }
