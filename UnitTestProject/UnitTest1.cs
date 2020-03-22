@@ -7,6 +7,9 @@ namespace UnitTestProject
     [TestClass]
     public class UnitTest1
     {
+        Train train = new Train();
+
+
         [TestMethod]
         public void TestMethod1()
         {

@@ -13,7 +13,8 @@ namespace Circustrein
 
             while (animals.Count != 0)
             {
-                animals = train.AddWagon(wagonIndex, animals);
+                train.AddWagon(wagonIndex, animals[0]);
+                animals.RemoveAt(0);
 
                 for (int i = animals.Count - 1; i >= 0; i--)
                 {
@@ -22,7 +23,8 @@ namespace Circustrein
 
                     if (train.IsAnimalCompatible(wagonIndex, animals[i]))
                     {
-                        train.AddAnimalToWagon(wagonIndex, animals[i], animals);
+                        train.AddAnimalToWagon(wagonIndex, animals[i]);
+                        animals.Remove(animals[i]);
                     }
                 }
                 wagonIndex += 1;

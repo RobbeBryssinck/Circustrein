@@ -15,15 +15,12 @@ namespace Circustrein
             Wagons = new List<Wagon>();
         }
 
-        public List<Animal> AddWagon(int wagonIndex, List<Animal> animals)
+        public void AddWagon(int wagonIndex, Animal animal)
         {
             Wagons.Add(new Wagon());
 
-            Wagons[wagonIndex].AddAnimal(animals[0]);
-            Wagons[wagonIndex].UsedSize = animals[0].Size;
-            animals.RemoveAt(0);
-            
-            return animals;
+            Wagons[wagonIndex].AddAnimal(animal);
+            Wagons[wagonIndex].UsedSize = animal.Size;
         }
 
         public bool IsAnimalTooBig(int wagonIndex, Animal animal)
@@ -55,11 +52,9 @@ namespace Circustrein
             return compatible;
         }
 
-        public List<Animal> AddAnimalToWagon(int wagonIndex, Animal animal, List<Animal> animals)
+        public void AddAnimalToWagon(int wagonIndex, Animal animal)
         {
             Wagons[wagonIndex].AddAnimal(animal);
-            animals.Remove(animal);
-            return animals;
         }
 
         public List<Wagon> GetWagons()
