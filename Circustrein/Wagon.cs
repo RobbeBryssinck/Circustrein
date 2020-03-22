@@ -9,7 +9,7 @@ namespace Circustrein
         // Properties
         public int Size { get; } = 10;
         public int UsedSize { get; set; }
-        List<Animal> Animals { get; set; }
+        public List<Animal> Animals { get; set; }
 
         // Methods
         public Wagon()

@@ -37,22 +37,7 @@ namespace Circustrein
                     if (train.IsAnimalTooBig(wagonIndex, i, animals))
                         continue;
 
-                    int compatible = 1;
-                    foreach (Animal wagonAnimal in train.Wagons[wagonIndex].Animals)
-                    {
-                        if (wagonAnimal.Food == "Carnivore" && wagonAnimal.Size >= train.Animals[i].Size)
-                        {
-                            compatible = 0;
-                            break;
-                        }
-                        if (train.Animals[i].Food == "Carnivore" && wagonAnimal.Size <= train.Animals[i].Size)
-                        {
-                            compatible = 0;
-                            break;
-                        }
-                    }
-
-                    if (compatible == 1)
+                    if (train.IsAnimalCompatible(wagonIndex, i, animals))
                     {
                         train.Wagons[wagonIndex].AddAnimal(train.Animals[i]);
                         train.Wagons[wagonIndex].UsedSize += train.Animals[i].Size;

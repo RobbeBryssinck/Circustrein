@@ -8,17 +8,11 @@ namespace Circustrein
     {
         // Properties
         List<Wagon> Wagons { get; set; }
-        int WagonIndex { get; } = 0;
 
         // Methods
         public Train()
         {
             Wagons = new List<Wagon>();
-        }
-
-        public void AddAnimal(Animal animal)
-        {
-            Animals.Add(animal);
         }
 
         public List<Animal> AddWagon(int wagonIndex, List<Animal> animals)
@@ -38,6 +32,27 @@ namespace Circustrein
                 return true;
             else
                 return false;
+        }
+
+        public bool IsAnimalCompatible(int wagonIndex, int animalIndex, List<Animal> animals)
+        {
+            bool compatible = true;
+
+            foreach (Animal wagonAnimal in Wagons[wagonIndex].Animals)
+            {
+                if (wagonAnimal.Food == "Carnivore" && wagonAnimal.Size >= animals[animalIndex].Size)
+                {
+                    compatible = false;
+                    break;
+                }
+                if (animals[animalIndex].Food == "Carnivore" && wagonAnimal.Size <= animals[animalIndex].Size)
+                {
+                    compatible = false;
+                    break;
+                }
+            }
+
+            return compatible;
         }
     }
 }
