@@ -61,5 +61,10 @@ namespace Circustrein
             animals.Remove(animal);
             return animals;
         }
+
+        public List<Wagon> GetWagons()
+        {
+            return Wagons;
+        }
     }
 }

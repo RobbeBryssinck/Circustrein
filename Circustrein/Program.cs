@@ -19,37 +19,16 @@ namespace Circustrein
             animals.Add(new Animal(5, "Herbivore"));
             animals.Add(new Animal(1, "Carnivore"));
 
-            Train train = LoadTrain(animals);
+            Sorter sorter = new Sorter();
+            Train train = sorter.LoadTrain(animals);
             PrintWagons(train);
-        }
-
-        public static Train LoadTrain(List<Animal> animals)
-        {
-            Train train = new Train();
-            int wagonIndex = 0;
-
-            while (animals.Count != 0)
-            {
-                animals = train.AddWagon(wagonIndex, animals);
-
-                for (int i = animals.Count - 1; i >= 0; i--)
-                {
-                    if (train.IsAnimalTooBig(wagonIndex, animals[i]))
-                        continue;
-
-                    if (train.IsAnimalCompatible(wagonIndex, animals[i]))
-                    {
-                        train.AddAnimalToWagon(wagonIndex, animals[i], animals);
-                    }
-                }
-                wagonIndex += 1;
-            }
-            return train;
         }
 
         public static void PrintWagons(Train train)
         {
-            foreach (Wagon wagon in train.Wagons)
+            List<Wagon> wagons = train.GetWagons();
+
+            foreach (Wagon wagon in wagons)
             {
                 Console.WriteLine("New wagon");
                 foreach (Animal animal in wagon.Animals)
