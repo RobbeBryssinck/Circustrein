@@ -34,12 +34,12 @@ namespace Circustrein
 
                 for (int i = animals.Count - 1; i >= 0; i--)
                 {
-                    if (train.IsAnimalTooBig(wagonIndex, i, animals))
+                    if (train.IsAnimalTooBig(wagonIndex, animals[i]))
                         continue;
 
-                    if (train.IsAnimalCompatible(wagonIndex, i, animals))
+                    if (train.IsAnimalCompatible(wagonIndex, animals[i]))
                     {
-                        train.AddAnimalToWagon(wagonIndex, i, animals);
+                        train.AddAnimalToWagon(wagonIndex, animals[i], animals);
                     }
                 }
                 wagonIndex += 1;

@@ -26,26 +26,26 @@ namespace Circustrein
             return animals;
         }
 
-        public bool IsAnimalTooBig(int wagonIndex, int animalIndex, List<Animal> animals)
+        public bool IsAnimalTooBig(int wagonIndex, Animal animal)
         {
-            if (Wagons[wagonIndex].UsedSize + animals[animalIndex].Size > 10)
+            if (Wagons[wagonIndex].UsedSize + animal.Size > 10)
                 return true;
             else
                 return false;
         }
 
-        public bool IsAnimalCompatible(int wagonIndex, int animalIndex, List<Animal> animals)
+        public bool IsAnimalCompatible(int wagonIndex, Animal animal)
         {
             bool compatible = true;
 
             foreach (Animal wagonAnimal in Wagons[wagonIndex].Animals)
             {
-                if (wagonAnimal.Food == "Carnivore" && wagonAnimal.Size >= animals[animalIndex].Size)
+                if (wagonAnimal.Food == "Carnivore" && wagonAnimal.Size >= animal.Size)
                 {
                     compatible = false;
                     break;
                 }
-                if (animals[animalIndex].Food == "Carnivore" && wagonAnimal.Size <= animals[animalIndex].Size)
+                if (animal.Food == "Carnivore" && wagonAnimal.Size <= animal.Size)
                 {
                     compatible = false;
                     break;
@@ -55,10 +55,10 @@ namespace Circustrein
             return compatible;
         }
 
-        public List<Animal> AddAnimalToWagon(int wagonIndex, int animalIndex, List<Animal> animals)
+        public List<Animal> AddAnimalToWagon(int wagonIndex, Animal animal, List<Animal> animals)
         {
-            Wagons[wagonIndex].AddAnimal(animals[animalIndex]);
-            animals.RemoveAt(animalIndex);
+            Wagons[wagonIndex].AddAnimal(animal);
+            animals.Remove(animal);
             return animals;
         }
     }
