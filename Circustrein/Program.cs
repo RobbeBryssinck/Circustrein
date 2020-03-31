@@ -19,8 +19,8 @@ namespace Circustrein
             animals.Add(new Animal(5, "Herbivore"));
             animals.Add(new Animal(1, "Carnivore"));
 
-            Sorter sorter = new Sorter();
-            Train train = sorter.LoadTrain(animals);
+            Train train = new Train();
+            train.LoadTrain(animals);
             PrintWagons(train);
         }
 
@@ -31,7 +31,7 @@ namespace Circustrein
             foreach (Wagon wagon in wagons)
             {
                 Console.WriteLine("New wagon");
-                foreach (Animal animal in wagon.Animals)
+                foreach (Animal animal in wagon.GetAnimals())
                 {
                     Console.WriteLine(animal.Food + animal.Size.ToString());
                 }

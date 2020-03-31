@@ -7,9 +7,9 @@ namespace Circustrein
     public class Wagon
     {
         // Properties
-        public int Size { get; } = 10;
-        public int UsedSize { get; set; }
-        public List<Animal> Animals { get; set; }
+        private int Size { get; } = 10;
+        private int UsedSize { get; set; } = 0;
+        private List<Animal> Animals { get; set; }
 
         // Methods
         public Wagon()
@@ -21,6 +21,35 @@ namespace Circustrein
         {
             Animals.Add(animal);
             UsedSize += animal.Size;
+        }
+
+        public bool IsAnimalTooBig(Animal animal)
+        {
+            if (UsedSize + animal.Size > Size)
+                return true;
+            else
+                return false;
+        }
+
+        public bool IsAnimalCompatible(Animal animal)
+        {
+            bool compatible = true;
+
+            foreach (Animal wagonAnimal in Animals)
+            {
+                if (animal.IsAnimalCompatible(wagonAnimal))
+                {
+                    compatible = false;
+                    break;
+                }
+            }
+
+            return compatible;
+        }
+
+        public List<Animal> GetAnimals()
+        {
+            return Animals;
         }
     }
 }

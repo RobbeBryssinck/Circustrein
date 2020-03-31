@@ -11,14 +11,14 @@ namespace UnitTestProject
         [TestMethod]
         public void LoadTrain()
         {
-            Sorter sorter = new Sorter();
-
             List<Animal> animals = new List<Animal>();
             animals.Add(new Animal(5, "Carnivore"));
             animals.Add(new Animal(3, "Herbivore"));
             animals.Add(new Animal(5, "Herbivore"));
 
-            Train train = sorter.LoadTrain(animals);
+            Train train = new Train();
+            train.LoadTrain(animals);
+
             List<Wagon> wagons = train.GetWagons();
             Assert.IsTrue(wagons[0].Animals[0].Size == 5 & wagons[0].Animals[0].Food == "Carnivore");
             Assert.IsTrue(wagons[1].Animals[0].Size == 3 & wagons[1].Animals[0].Food == "Herbivore");

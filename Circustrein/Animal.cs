@@ -25,5 +25,12 @@ namespace Circustrein
             Size = size;
             Food = food;
         }
+
+        public bool IsAnimalCompatible(Animal wagonAnimal)
+        {
+            if (wagonAnimal.Food == "Carnivore" && wagonAnimal.Size >= Size || Food == "Carnivore" && wagonAnimal.Size <= Size)
+                return true;
+            return false;
+        }
     }
 }
