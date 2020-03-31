@@ -49,5 +49,20 @@ namespace Circustrein
         {
             return Wagons;
         }
+
+        public List<Animal> GetAnimals()
+        {
+            List<Animal> animals = new List<Animal>();
+
+            foreach (Wagon wagon in Wagons)
+            {
+                foreach (Animal animal in wagon.GetAnimals())
+                {
+                    animals.Add(animal);
+                }
+            }
+
+            return animals;
+        }
     }
 }

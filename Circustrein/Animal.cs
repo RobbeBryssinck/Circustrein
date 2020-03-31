@@ -4,23 +4,21 @@ using System.Text;
 
 namespace Circustrein
 {
-    /*
-    enum AnimalSize
+    public enum AnimalSize
     {
         Small = 1,
         Medium = 3,
         Big = 5
     }
-    */
 
     public class Animal
     {
         // Properties
-        public int Size { get; }
+        public AnimalSize Size { get; }
         public string Food { get; }
 
         // Methods
-        public Animal(int size, string food)
+        public Animal(AnimalSize size, string food)
         {
             Size = size;
             Food = food;

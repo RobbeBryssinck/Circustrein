@@ -8,16 +8,16 @@ namespace Circustrein
         static void Main(string[] args)
         {
             List<Animal> animals = new List<Animal>();
-            animals.Add(new Animal(1, "Herbivore"));
-            animals.Add(new Animal(5, "Carnivore"));
-            animals.Add(new Animal(3, "Herbivore"));
-            animals.Add(new Animal(5, "Herbivore"));
-            animals.Add(new Animal(3, "Carnivore"));
-            animals.Add(new Animal(3, "Carnivore"));
-            animals.Add(new Animal(1, "Herbivore"));
-            animals.Add(new Animal(3, "Herbivore"));
-            animals.Add(new Animal(5, "Herbivore"));
-            animals.Add(new Animal(1, "Carnivore"));
+            animals.Add(new Animal(AnimalSize.Small, "Herbivore"));
+            animals.Add(new Animal(AnimalSize.Big, "Carnivore"));
+            animals.Add(new Animal(AnimalSize.Medium, "Herbivore"));
+            animals.Add(new Animal(AnimalSize.Big, "Herbivore"));
+            animals.Add(new Animal(AnimalSize.Medium, "Carnivore"));
+            animals.Add(new Animal(AnimalSize.Medium, "Carnivore"));
+            animals.Add(new Animal(AnimalSize.Small, "Herbivore"));
+            animals.Add(new Animal(AnimalSize.Medium, "Herbivore"));
+            animals.Add(new Animal(AnimalSize.Big, "Herbivore"));
+            animals.Add(new Animal(AnimalSize.Small, "Carnivore"));
 
             Train train = new Train();
             train.LoadTrain(animals);
@@ -30,7 +30,7 @@ namespace Circustrein
 
             foreach (Wagon wagon in wagons)
             {
-                Console.WriteLine("New wagon");
+                Console.WriteLine("---------------New wagon---------------");
                 foreach (Animal animal in wagon.GetAnimals())
                 {
                     Console.WriteLine(animal.Food + animal.Size.ToString());

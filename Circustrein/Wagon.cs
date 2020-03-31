@@ -20,12 +20,12 @@ namespace Circustrein
         public void AddAnimal(Animal animal)
         {
             Animals.Add(animal);
-            UsedSize += animal.Size;
+            UsedSize += (int)animal.Size;
         }
 
         public bool IsAnimalTooBig(Animal animal)
         {
-            if (UsedSize + animal.Size > Size)
+            if (UsedSize + (int)animal.Size > Size)
                 return true;
             else
                 return false;
