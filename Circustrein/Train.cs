@@ -15,6 +15,30 @@ namespace Circustrein
             Wagons = new List<Wagon>();
         }
 
+        public void LoadTrain(List<Animal> animals)
+        {
+            int wagonIndex = 0;
+
+            while (animals.Count != 0)
+            {
+                AddWagon(wagonIndex, animals[0]);
+                animals.RemoveAt(0);
+
+                for (int i = animals.Count - 1; i >= 0; i--)
+                {
+                    if (IsAnimalTooBig(wagonIndex, animals[i]))
+                        continue;
+
+                    if (IsAnimalCompatible(wagonIndex, animals[i]))
+                    {
+                        AddAnimalToWagon(wagonIndex, animals[i]);
+                        animals.Remove(animals[i]);
+                    }
+                }
+                wagonIndex += 1;
+            }
+        }
+
         public void AddWagon(int wagonIndex, Animal animal)
         {
             Wagons.Add(new Wagon());

@@ -9,17 +9,20 @@ namespace UnitTestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void AddAnimalToWagonTest()
+        public void LoadTrain()
         {
-            Train train = new Train();
-            List<Wagon> localWagons = new List<Wagon>();
-            localWagons.Add(new Wagon());
-            localWagons[0].AddAnimal(new Animal(1, "Herbivore"));
-            train.AddWagon(0, new Animal(1, "Herbivore"));
+            Sorter sorter = new Sorter();
 
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Animal(5, "Carnivore"));
+            animals.Add(new Animal(3, "Herbivore"));
+            animals.Add(new Animal(5, "Herbivore"));
+
+            Train train = sorter.LoadTrain(animals);
             List<Wagon> wagons = train.GetWagons();
-
-            CollectionAssert.AreEqual(wagons, localWagons);
+            Assert.IsTrue(wagons[0].Animals[0].Size == 5 & wagons[0].Animals[0].Food == "Carnivore");
+            Assert.IsTrue(wagons[1].Animals[0].Size == 3 & wagons[1].Animals[0].Food == "Herbivore");
+            Assert.IsTrue(wagons[1].Animals[1].Size == 5 & wagons[1].Animals[1].Food == "Herbivore");
         }
     }
 }
