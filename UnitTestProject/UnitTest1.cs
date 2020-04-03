@@ -9,7 +9,7 @@ namespace UnitTestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void LoadTrain()
+        public void TrainGivenRandomAnimalsLoadsCorrectly()
         {
             List<Animal> animals = new List<Animal>();
             animals.Add(new Animal(AnimalSize.Big, AnimalFood.Carnivore));
@@ -24,5 +24,6 @@ namespace UnitTestProject
             Assert.IsTrue(loadedAnimals[1].Size == AnimalSize.Medium & loadedAnimals[1].Food == AnimalFood.Herbivore);
             Assert.IsTrue(loadedAnimals[2].Size == AnimalSize.Big & loadedAnimals[2].Food == AnimalFood.Herbivore);
         }
+
     }
 }
