@@ -22,35 +22,33 @@ namespace Circustrein
             while (animals.Count != 0)
             {
                 AddWagon(wagonIndex, animals[0]);
+                Wagon wagon = Wagons[wagonIndex];
                 animals.RemoveAt(0);
 
                 for (int i = animals.Count - 1; i >= 0; i--)
                 {
-                    if (Wagons[wagonIndex].IsAnimalTooBig(animals[i]))
-                        continue;
-
-                    if (Wagons[wagonIndex].IsAnimalCompatible(animals[i]))
+                    Animal animal = animals[i];
+                    if (wagon.AddAnimal(animal))
                     {
-                        Wagons[wagonIndex].AddAnimal(animals[i]);
-                        animals.Remove(animals[i]);
+                        animals.Remove(animal);
                     }
                 }
                 wagonIndex += 1;
             }
         }
 
-        public void AddWagon(int wagonIndex, Animal animal)
+        private void AddWagon(int wagonIndex, Animal animal)
         {
             Wagons.Add(new Wagon());
             Wagons[wagonIndex].AddAnimal(animal);
         }
 
-        public List<Wagon> GetWagons()
+        public IReadOnlyList<Wagon> GetWagons()
         {
             return Wagons;
         }
 
-        public List<Animal> GetAnimals()
+        public IReadOnlyList<Animal> GetAnimals()
         {
             List<Animal> animals = new List<Animal>();
 

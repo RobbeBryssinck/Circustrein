@@ -8,16 +8,16 @@ namespace Circustrein
         static void Main(string[] args)
         {
             List<Animal> animals = new List<Animal>();
-            animals.Add(new Animal(AnimalSize.Small, "Herbivore"));
-            animals.Add(new Animal(AnimalSize.Big, "Carnivore"));
-            animals.Add(new Animal(AnimalSize.Medium, "Herbivore"));
-            animals.Add(new Animal(AnimalSize.Big, "Herbivore"));
-            animals.Add(new Animal(AnimalSize.Medium, "Carnivore"));
-            animals.Add(new Animal(AnimalSize.Medium, "Carnivore"));
-            animals.Add(new Animal(AnimalSize.Small, "Herbivore"));
-            animals.Add(new Animal(AnimalSize.Medium, "Herbivore"));
-            animals.Add(new Animal(AnimalSize.Big, "Herbivore"));
-            animals.Add(new Animal(AnimalSize.Small, "Carnivore"));
+            animals.Add(new Animal(AnimalSize.Small, AnimalFood.Herbivore));
+            animals.Add(new Animal(AnimalSize.Big, AnimalFood.Carnivore));
+            animals.Add(new Animal(AnimalSize.Medium, AnimalFood.Herbivore));
+            animals.Add(new Animal(AnimalSize.Big, AnimalFood.Herbivore));
+            animals.Add(new Animal(AnimalSize.Medium, AnimalFood.Carnivore));
+            animals.Add(new Animal(AnimalSize.Medium, AnimalFood.Carnivore));
+            animals.Add(new Animal(AnimalSize.Small, AnimalFood.Herbivore));
+            animals.Add(new Animal(AnimalSize.Medium, AnimalFood.Herbivore));
+            animals.Add(new Animal(AnimalSize.Big, AnimalFood.Herbivore));
+            animals.Add(new Animal(AnimalSize.Small, AnimalFood.Carnivore));
 
             Train train = new Train();
             train.LoadTrain(animals);
@@ -26,7 +26,7 @@ namespace Circustrein
 
         public static void PrintWagons(Train train)
         {
-            List<Wagon> wagons = train.GetWagons();
+            IReadOnlyList<Wagon> wagons = train.GetWagons();
 
             foreach (Wagon wagon in wagons)
             {

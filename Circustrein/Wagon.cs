@@ -17,27 +17,34 @@ namespace Circustrein
             Animals = new List<Animal>();
         }
 
-        public void AddAnimal(Animal animal)
+        //TODO: combineren van onderste 3 functies
+        public bool AddAnimal(Animal animal)
         {
-            Animals.Add(animal);
-            UsedSize += (int)animal.Size;
+            if (IsAnimalRightSize(animal) && IsAnimalNotDangerous(animal))
+            {
+                Animals.Add(animal);
+                UsedSize += (int)animal.Size;
+                return true;
+            }
+            else
+                return false;
         }
 
-        public bool IsAnimalTooBig(Animal animal)
+        private bool IsAnimalRightSize(Animal animal)
         {
-            if (UsedSize + (int)animal.Size > Size)
+            if (UsedSize + (int)animal.Size <= Size)
                 return true;
             else
                 return false;
         }
 
-        public bool IsAnimalCompatible(Animal animal)
+        private bool IsAnimalNotDangerous(Animal animal)
         {
             bool compatible = true;
 
             foreach (Animal wagonAnimal in Animals)
             {
-                if (animal.IsAnimalCompatible(wagonAnimal))
+                if (animal.IsAnimalDangerous(wagonAnimal))
                 {
                     compatible = false;
                     break;
@@ -47,7 +54,7 @@ namespace Circustrein
             return compatible;
         }
 
-        public List<Animal> GetAnimals()
+        public IReadOnlyList<Animal> GetAnimals()
         {
             return Animals;
         }
