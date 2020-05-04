@@ -17,7 +17,6 @@ namespace Circustrein
             Animals = new List<Animal>();
         }
 
-        //TODO: combineren van onderste 3 functies
         public bool AddAnimal(Animal animal)
         {
             if (IsAnimalRightSize(animal) && IsAnimalNotDangerous(animal))
